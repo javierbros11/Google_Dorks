@@ -1,5 +1,9 @@
+# Packages
+
 import os
 import requests
+
+# Class
 
 class FileDownloader:
     """
