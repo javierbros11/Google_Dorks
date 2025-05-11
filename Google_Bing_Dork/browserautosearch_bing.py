@@ -17,10 +17,21 @@ import time
 # Class
 
 class BrowserAutoSearch:
+    """
+    Esta clase permite utilizar la librería Selenium para realizar búsquedas automáticas imitando el comportamiento humano.
+    """
     def __init__(self):
+        """
+        Función constructora. Inicializa los atributos de instancia.
+        """
+
         self.browser = self._initialize_browser()
 
     def _initialize_browser(self):
+        """
+        Permite inicializar los buscadores en función de los que instalados en el S.O, ya sea Firefox o Google Chrome.
+        """
+        
         browsers = {
             "firefox" : {
                 "service" : FirefoxService(GeckoDriverManager().install()),
@@ -43,17 +54,15 @@ class BrowserAutoSearch:
         
         raise Exception("No se pudo inicial ningún navegador, ¿tiene instalador Firefox o Chrome?")
     
-# Inicializa el webdriver Firefox
-
-# Inicializa el Webdriver de Chrome
-# service = Service(ChromeDriverManager().install())
-# options = webdriver.ChromeOptions()
-# browser = webdriver.Chrome(service=service,options=options)
 
     def accept_cookies(self, button_selector):
         """
-        Acepta el anuncio de cookies de un buscador.
+        Acepta el anuncio de cookies del buscador otorgado por Micorsoft Bing.
+
+        Args:
+            button_selector(str): Corresponde al ID asociado al botón de aceptar las cookies cuando accedemos por primera vez en el navegador.
         """
+
         try:
             accept_button = self.browser.find_element(By.ID, button_selector)
             accept_button.click()
@@ -62,7 +71,10 @@ class BrowserAutoSearch:
 
     def search_bing(self,query):
         """
-        Realiza una búsqueda en Bing.
+        Realiza una búsqueda en Microsoft Bing.
+
+        Args:
+            query(str): Se trata de la consulta que desea realizar el usuario.
         """
         
         # Abre Google
@@ -84,8 +96,9 @@ class BrowserAutoSearch:
 
     def bing_search_results(self):
         """
-        Extrae los resultados en una consulta en Bing.
+        Extrae los resultados de la consulta.
         """
+        
         # Extraemos los enlaces y descripciones de los primeros resultados
         results = self.browser.find_elements(By.CLASS_NAME, "b_algo")
         custom_results = []
