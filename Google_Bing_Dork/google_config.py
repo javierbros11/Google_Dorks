@@ -4,6 +4,8 @@ from dotenv import load_dotenv, set_key
 import os
 import sys
 
+# Class
+
 class GoogleConfig:
     """
     Realiza la configuración del archivo .env.
@@ -15,12 +17,14 @@ class GoogleConfig:
         Args:
             configure_env(bool): Indica si se quiere configurar las APIs.
         """
+        
         self.configure = configure_env
     
     def _env_config(self):
         """
         Se encarga de configurar el archivo .env con los valores proporcionados.
         """
+        
         api_key = input("Introduce tu API_KEY de Google: ")
         engine_id = input("Introduce el id del buscador personalizado de Google: ")
 
@@ -29,6 +33,9 @@ class GoogleConfig:
 
 
     def load_env(self):
+        """
+        Comprueba si ya existe el archivo .env.
+        """
         # Comprobamos si existe el fichero .env
         env_exists = os.path.exists(".env")
 
