@@ -1,4 +1,8 @@
+# Packages
+
 import requests
+
+# Class
 
 class GoogleSearch:
 
