@@ -1,7 +1,10 @@
+# Packages
+
 import json
 from rich.console import Console
 from rich.table import Table
 
+# Class
 class ResultsParser:
 
     def __init__(self, results):
@@ -15,6 +18,13 @@ class ResultsParser:
         self.results = results
     
     def exportar_html(self, ruta_salida):
+        """
+        Permite exportar los resultados obtenidos en un archivo .html.
+
+        Args:
+            ruta_salida(str): Corresponde a la ruta donde se almacenará el archivo .html.
+        """
+        
         with open("html_template_google_dorks.html", "r", encoding="utf-8") as f:
             plantilla = f.read()
 
@@ -33,11 +43,22 @@ class ResultsParser:
         print(f"Resultados exportados a HTML. Fichero creado: {ruta_salida}")
     
     def exportar_json(self,ruta_salida):
+        """
+        Permite exportar los resultados obtenidos en un archivo .json.
+
+        Args:
+            ruta_salida(str): Corresponde a la ruta donde se almacenará el archivo .json.
+        """
+        
         with open(ruta_salida, "w", encoding="utf-8") as f:
             json.dump(self.results, f ,ensure_ascii=False, indent=4) # <- 4 espacios de identación al inicio del doc
         print(f"Resultados exportados a JSON. Fichero creado: {ruta_salida}")
     
     def mostrar_pantalla(self):
+        """
+            Muestra por linea de comandos los resultados obtenidos tras realizar la consultas.
+        """
+        
         console = Console()
         table = Table(show_header=True, header_style="bold magenta")
         table.add_column("#", style="dim")
