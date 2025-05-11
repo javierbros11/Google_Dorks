@@ -1,4 +1,8 @@
+# External Packages
+
 from gpt4all import GPT4All
+
+# Class
 
 class IAAgent:
 
